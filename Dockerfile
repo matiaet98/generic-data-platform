@@ -102,12 +102,28 @@ RUN wget https://maven.xwiki.org/externals/com/oracle/jdbc/ojdbc8/12.2.0.1/ojdbc
     rm -fr /gdp/hive/lib/guava-19.0.jar && \
     cp /gdp/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar /gdp/hive/lib/ && \
     mkdir /gdp/notebooks && \
+    mkdir /gdp/hive/tmp && \
     chown -R hdfs:hdfs /{gdp,data}
 
 WORKDIR /
 
 # Copy our configurations
-COPY config/ /
+COPY config/etc /etc
+COPY config/usr /usr
+COPY config/var /var
+COPY config/gdp/airflow/* /gdp/airflow/
+COPY config/gdp/hadoop/* /gdp/hadoop/
+COPY config/gdp/hbase/* /gdp/hbase/
+COPY config/gdp/hive/* /gdp/hive/
+COPY config/gdp/jupyter/* /gdp/jupyter/
+COPY config/gdp/kafka/* /gdp/kafka/
+COPY config/gdp/nifi/* /gdp/nifi/
+COPY config/gdp/presto/* /gdp/presto/
+COPY config/gdp/spark/* /gdp/spark/
+COPY config/gdp/sqoop/* /gdp/sqoop/
+COPY config/gdp/zookeeper/* /gdp/zookeeper/
+
+
 RUN rm -fr /var/run/nologin
 
 EXPOSE 8080 18080 8088 9870 16010 9090 8888 8000 8090 2181 9092 7077 9000
