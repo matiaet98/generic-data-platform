@@ -49,26 +49,27 @@ RUN useradd -m -G users,wheel hdfs && \
     su -c "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" hive && \
     su -c "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" postgres && \
     mkdir -p /gdp && \
-    mkdir -p /data/{dn,nn,zk,presto} && \
-    pushd /gdp/
+    mkdir -p /data/{dn,nn,zk,presto}
 
-RUN wget http://apache.dattatec.com/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz && \
+WORKDIR /gdp/
+
+RUN wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.1.tar.gz && \
     tar xfz hadoop-3.2.1.tar.gz && \
     rm -fr hadoop-3.2.1.tar.gz && \
     ln -s hadoop-3.2.1 hadoop
-RUN wget http://apache.dattatec.com/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop3.2.tgz && \
+RUN wget https://archive.apache.org/dist/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop3.2.tgz && \
     tar xfz spark-3.0.0-preview2-bin-hadoop3.2.tgz && \
     rm -fr spark-3.0.0-preview2-bin-hadoop3.2.tgz && \
     ln -s spark-3.0.0-preview2-bin-hadoop3.2 spark
-RUN wget http://apache.dattatec.com/zookeeper/zookeeper-3.5.7/apache-zookeeper-3.5.7-bin.tar.gz && \
+RUN wget https://archive.apache.org/dist/zookeeper/zookeeper-3.5.7/apache-zookeeper-3.5.7-bin.tar.gz && \
     tar xfz apache-zookeeper-3.5.7-bin.tar.gz && \
     rm -fr apache-zookeeper-3.5.7-bin.tar.gz && \
     ln -s apache-zookeeper-3.5.7-bin zookeeper
-RUN wget http://apache.dattatec.com/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz && \
+RUN wget https://archive.apache.org/dist/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz && \
     tar xfz apache-hive-3.1.2-bin.tar.gz && \
     rm -fr apache-hive-3.1.2-bin.tar.gz && \
     ln -s apache-hive-3.1.2-bin hive
-RUN wget http://apache.dattatec.com/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
+RUN wget https://archive.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
     tar xfz sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
     rm -fr sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
     ln -s sqoop-1.4.7.bin__hadoop-2.6.0 sqoop && \
@@ -78,15 +79,15 @@ RUN wget https://repo1.maven.org/maven2/io/prestosql/presto-server/330/presto-se
     tar xfz presto-server-330.tar.gz && \
     rm -fr presto-server-330.tar.gz && \
     ln -s presto-server-330 presto
-RUN wget http://apache.dattatec.com/hbase/2.2.3/hbase-2.2.3-bin.tar.gz && \
+RUN wget https://archive.apache.org/dist/hbase/2.2.3/hbase-2.2.3-bin.tar.gz && \
     tar xfz hbase-2.2.3-bin.tar.gz && \
     rm -fr hbase-2.2.3-bin.tar.gz && \
     ln -s hbase-2.2.3 hbase
-RUN wget http://apache.dattatec.com/phoenix/apache-phoenix-5.0.0-HBase-2.0/bin/apache-phoenix-5.0.0-HBase-2.0-bin.tar.gz && \
+RUN wget https://archive.apache.org/dist/phoenix/apache-phoenix-5.0.0-HBase-2.0/bin/apache-phoenix-5.0.0-HBase-2.0-bin.tar.gz && \
     tar xfz apache-phoenix-5.0.0-HBase-2.0-bin.tar.gz && \
     rm -fr apache-phoenix-5.0.0-HBase-2.0-bin.tar.gz && \
     ln -s apache-phoenix-5.0.0-HBase-2.0-bin phoenix
-RUN wget http://apache.dattatec.com/kafka/2.4.0/kafka_2.12-2.4.0.tgz && \
+RUN wget https://archive.apache.org/dist/kafka/2.4.0/kafka_2.12-2.4.0.tgz && \
     tar xfz kafka_2.12-2.4.0.tgz && \
     rm -fr kafka_2.12-2.4.0.tgz && \
     ln -s kafka_2.12-2.4.0 kafka
@@ -107,6 +108,8 @@ RUN wget https://maven.xwiki.org/externals/com/oracle/jdbc/ojdbc8/12.2.0.1/ojdbc
     mkdir /gdp/notebooks && \
     popd && \
     chown -R hdfs:hdfs /{gdp,data}
+
+WORKDIR /
 
 # Copy our configurations
 COPY config/ /
