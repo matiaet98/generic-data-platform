@@ -90,10 +90,10 @@ RUN wget http://apache.dattatec.com/kafka/2.4.0/kafka_2.12-2.4.0.tgz && \
     tar xfz kafka_2.12-2.4.0.tgz && \
     rm -fr kafka_2.12-2.4.0.tgz && \
     ln -s kafka_2.12-2.4.0 kafka
-RUN wget http://apache.dattatec.com/nifi/1.11.2/nifi-1.11.2-bin.tar.gz && \
-    tar xfz nifi-1.11.2-bin.tar.gz && \
-    rm -fr nifi-1.11.2-bin.tar.gz && \
-    ln -s nifi-1.11.2 nifi
+RUN wget https://archive.apache.org/dist/nifi/1.11.3/nifi-1.11.3-bin.tar.gz && \
+    tar xfz nifi-1.11.3-bin.tar.gz && \
+    rm -fr nifi-1.11.3-bin.tar.gz && \
+    ln -s nifi-1.11.3 nifi
 RUN wget https://maven.xwiki.org/externals/com/oracle/jdbc/ojdbc8/12.2.0.1/ojdbc8-12.2.0.1.jar && \ 
     cp /gdp/phoenix/*.jar /gdp/hbase/lib/ && \
     chmod +x presto-cli-330-executable.jar && \

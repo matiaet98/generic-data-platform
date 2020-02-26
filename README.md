@@ -47,7 +47,7 @@ docker run \
 - Apache Sqoop 1.4.7
 - Apache Zookeeper 3.5.7
 - PrestoSQL 330
-- Apache NiFi 1.11.2
+- Apache NiFi 1.11.3
 - Apache Kafka 2.4.0
 - Apache Phoenix 5.0.0
 - Apache Airflow 1.10.9
