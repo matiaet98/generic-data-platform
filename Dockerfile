@@ -1,4 +1,6 @@
-FROM centos:8 as centos8-with-systemd
+FROM centos:latest
+LABEL maintainer="matiaet98"
+ENV container docker
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
@@ -8,11 +10,6 @@ rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
 rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
-
-FROM centos8-with-systemd
-LABEL maintainer="matiaet98"
-
-ENV container docker
 
 WORKDIR /
 
@@ -26,8 +23,7 @@ RUN yum update -y && \
     https://download.oracle.com/otn_software/linux/instantclient/19600/oracle-instantclient19.6-basic-19.6.0.0.0-1.x86_64.rpm \
     https://download.oracle.com/otn_software/linux/instantclient/19600/oracle-instantclient19.6-sqlplus-19.6.0.0.0-1.x86_64.rpm
     
-RUN rm -fr /var/run/nologin && \
-    ln -s /bin/python3 /bin/python && \
+RUN ln -s /bin/python3 /bin/python && \
     python3 -m pip install jupyterlab pandas numpy apache-airflow[hdfs,hive,jdbc,oracle,password,presto] py-postgresql psycopg2 pyspark cryptography
 
 RUN useradd -m -G users,wheel hdfs && \
@@ -53,7 +49,7 @@ RUN useradd -m -G users,wheel hdfs && \
 
 WORKDIR /gdp/
 
-RUN wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.1.tar.gz && \
+RUN wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz && \
     tar xfz hadoop-3.2.1.tar.gz && \
     rm -fr hadoop-3.2.1.tar.gz && \
     ln -s hadoop-3.2.1 hadoop
@@ -106,16 +102,14 @@ RUN wget https://maven.xwiki.org/externals/com/oracle/jdbc/ojdbc8/12.2.0.1/ojdbc
     rm -fr /gdp/hive/lib/guava-19.0.jar && \
     cp /gdp/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar /gdp/hive/lib/ && \
     mkdir /gdp/notebooks && \
-    popd && \
     chown -R hdfs:hdfs /{gdp,data}
 
 WORKDIR /
 
 # Copy our configurations
 COPY config/ /
+RUN rm -fr /var/run/nologin
 
 EXPOSE 8080 18080 8088 9870 16010 9090 8888 8000 8090 2181 9092 7077 9000
 VOLUME ["/sys/fs/cgroup","/data/dn","/data/nn","/data/zk","/data/presto"]
-
-USER hdfs
 CMD ["/usr/sbin/init"]
