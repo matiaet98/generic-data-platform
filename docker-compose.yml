@@ -9,7 +9,7 @@ services:
         privileged: true
         networks:
             matinet:
-                ipv4_address: 11.0.0.9
+                ipv4_address: <ip>
                 aliases:
                     - mdp.matinet
         volumes:

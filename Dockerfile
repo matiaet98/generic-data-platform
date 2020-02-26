@@ -48,9 +48,9 @@ RUN useradd -m -G users,wheel hdfs && \
     su -c "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" spark && \
     su -c "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" hive && \
     su -c "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" postgres && \
-    mkdir -p /mdp && \
+    mkdir -p /gdp && \
     mkdir -p /data/{dn,nn,zk,presto} && \
-    pushd /mdp/
+    pushd /gdp/
 
 RUN wget http://apache.dattatec.com/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz && \
     tar xfz hadoop-3.2.1.tar.gz && \
@@ -72,7 +72,7 @@ RUN wget http://apache.dattatec.com/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.ta
     tar xfz sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
     rm -fr sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
     ln -s sqoop-1.4.7.bin__hadoop-2.6.0 sqoop && \
-    wget https://repo1.maven.org/maven2/com/carrotsearch/jdk19/commons-lang/2.6.1/commons-lang-2.6.1.jar -P /mdp/sqoop/lib/
+    wget https://repo1.maven.org/maven2/com/carrotsearch/jdk19/commons-lang/2.6.1/commons-lang-2.6.1.jar -P /gdp/sqoop/lib/
 RUN wget https://repo1.maven.org/maven2/io/prestosql/presto-server/330/presto-server-330.tar.gz && \
     wget https://repo1.maven.org/maven2/io/prestosql/presto-cli/330/presto-cli-330-executable.jar && \
     tar xfz presto-server-330.tar.gz && \
@@ -95,18 +95,18 @@ RUN wget http://apache.dattatec.com/nifi/1.11.2/nifi-1.11.2-bin.tar.gz && \
     rm -fr nifi-1.11.2-bin.tar.gz && \
     ln -s nifi-1.11.2 nifi
 RUN wget https://maven.xwiki.org/externals/com/oracle/jdbc/ojdbc8/12.2.0.1/ojdbc8-12.2.0.1.jar && \ 
-    cp /mdp/phoenix/*.jar /mdp/hbase/lib/ && \
+    cp /gdp/phoenix/*.jar /gdp/hbase/lib/ && \
     chmod +x presto-cli-330-executable.jar && \
     mv presto-cli-330-executable.jar presto/bin/presto && \
-    cp ojdbc8-12.2.0.1.jar /mdp/hive/lib/ojdbc8.jar && \
-    cp ojdbc8-12.2.0.1.jar /mdp/spark/jars/ojdbc8.jar && \
-    cp ojdbc8-12.2.0.1.jar /mdp/sqoop/lib/ojdbc8.jar && \
+    cp ojdbc8-12.2.0.1.jar /gdp/hive/lib/ojdbc8.jar && \
+    cp ojdbc8-12.2.0.1.jar /gdp/spark/jars/ojdbc8.jar && \
+    cp ojdbc8-12.2.0.1.jar /gdp/sqoop/lib/ojdbc8.jar && \
     rm -fr ojdbc8-12.2.0.1.jar && \
-    rm -fr /mdp/hive/lib/guava-19.0.jar && \
-    cp /mdp/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar /mdp/hive/lib/ && \
-    mkdir /mdp/notebooks && \
+    rm -fr /gdp/hive/lib/guava-19.0.jar && \
+    cp /gdp/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar /gdp/hive/lib/ && \
+    mkdir /gdp/notebooks && \
     popd && \
-    chown -R hdfs:hdfs /{mdp,data}
+    chown -R hdfs:hdfs /{gdp,data}
 
 # Copy our configurations
 COPY config/ /

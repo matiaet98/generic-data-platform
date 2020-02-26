@@ -21,10 +21,9 @@ if [ $yon == "n" ]; then
     exit 1
 fi
 
-# sed -i "s/<ip>/${ip}/g; s/<domainname>/${domainname}/g; s/<hostname>/${hostname}/g; s/<network>/${network}/g;" a.txt
+find config/ -type f -exec sed -i "s/<ip>/${ip}/g; s/<domainname>/${domainname}/g; s/<hostname>/${hostname}/g; s/<network>/${network}/g;" {} \;
+sed -i "s/<ip>/${ip}/g; s/<domainname>/${domainname}/g; s/<hostname>/${hostname}/g; s/<network>/${network}/g;" docker-compose.yml
 
-
-
-docker rmi matiaet98/mdp:latest
-docker build --rm -t matiaet98/mdp:latest .
+echo "All set; You can build the image now with docker build --rm -t <image name>:<tag> ."
+#docker build --rm -t matiaet98/gdp:latest .
 
