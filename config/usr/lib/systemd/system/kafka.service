@@ -8,7 +8,7 @@ EnvironmentFile=/etc/environment
 Type=simple
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/kafka/bin/kafka-server-start.sh /mdp/kafka/config/server.properties
+ExecStart=/gdp/kafka/bin/kafka-server-start.sh /gdp/kafka/config/server.properties
 KillMode=process
 
 [Install]

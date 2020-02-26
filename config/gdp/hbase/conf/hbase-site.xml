@@ -27,7 +27,7 @@
     </property>
     <property>
         <name>hbase.rootdir</name>
-        <value>hdfs://mdp.matinet:9000/user/hdfs/hbase</value>
+        <value>hdfs://<hostname>.<domainname>:9000/user/hdfs/hbase</value>
     </property>
     <property>
         <name>hbase.zookeeper.property.dataDir</name>
@@ -35,7 +35,7 @@
     </property>
     <property>
         <name>hbase.zookeeper.quorum</name>
-        <value>mdp.matinet</value>
+        <value><hostname>.<domainname></value>
     </property>
     <property>
         <name>hbase.zookeeper.property.clientPort</name>

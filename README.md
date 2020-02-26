@@ -11,7 +11,7 @@ you can edit the file or you can just run it using docker run like this:
 ~~~bash
 docker run \
     --privileged \
-    --network matinet \
+    --network <network> \
     --ip 11.0.0.9 \
     --name mygdp \
     --hostname mygdp.matinet \

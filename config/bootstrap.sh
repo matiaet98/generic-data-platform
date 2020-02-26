@@ -48,7 +48,7 @@ spark-shell --master local \
 <<EOF
 :q
 EOF
-mv ~/.ivy2/jars/* /mdp/spark/jars/
+mv ~/.ivy2/jars/* /gdp/spark/jars/
 sudo systemctl enable spark-history-server
 sudo systemctl start spark-history-server
 

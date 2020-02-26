@@ -1,18 +1,18 @@
 #!/bin/bash
 
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0
-export HADOOP_HOME=/mdp/hadoop
-export HADOOP_CONF_DIR=/mdp/hadoop/etc/hadoop
-export SPARK_HOME=/mdp/spark
-export SPARK_CONF_DIR=/mdp/spark/conf
-export HIVE_HOME=/mdp/hive
-export HIVE_CONF_DIR=/mdp/hive/conf
-export SQOOP_HOME=/mdp/sqoop
-export AIRFLOW_HOME=/mdp/airflow
-export PRESTO_HOME=/mdp/presto
-export KAFKA_HOME=/mdp/kafka
-export HBASE_HOME=/mdp/hbase
-export PHOENIX_HOME=/mdp/phoenix
+export HADOOP_HOME=/gdp/hadoop
+export HADOOP_CONF_DIR=/gdp/hadoop/etc/hadoop
+export SPARK_HOME=/gdp/spark
+export SPARK_CONF_DIR=/gdp/spark/conf
+export HIVE_HOME=/gdp/hive
+export HIVE_CONF_DIR=/gdp/hive/conf
+export SQOOP_HOME=/gdp/sqoop
+export AIRFLOW_HOME=/gdp/airflow
+export PRESTO_HOME=/gdp/presto
+export KAFKA_HOME=/gdp/kafka
+export HBASE_HOME=/gdp/hbase
+export PHOENIX_HOME=/gdp/phoenix
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH

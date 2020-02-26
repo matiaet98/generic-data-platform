@@ -5,8 +5,8 @@ After=network.target sshd.service
 [Service]
 EnvironmentFile=/etc/environment
 Type=forking
-ExecStart=/mdp/zookeeper/bin/zkServer.sh start
-ExecStop=/mdp/zookeeper/bin/zkServer.sh stop
+ExecStart=/gdp/zookeeper/bin/zkServer.sh start
+ExecStop=/gdp/zookeeper/bin/zkServer.sh stop
 RemainAfterExit=yes
 
 [Install]

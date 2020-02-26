@@ -5,8 +5,8 @@ After=network.target
 [Service]
 EnvironmentFile=/etc/environment
 Type=forking
-ExecStart=/mdp/nifi/bin/nifi.sh start
-ExecStop=/mdp/nifi/bin/nifi.sh stop
+ExecStart=/gdp/nifi/bin/nifi.sh start
+ExecStop=/gdp/nifi/bin/nifi.sh stop
 RemainAfterExit=yes
 
 [Install]

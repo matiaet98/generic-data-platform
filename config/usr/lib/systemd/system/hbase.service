@@ -8,8 +8,8 @@ EnvironmentFile=/etc/environment
 Type=forking
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/hbase/bin/start-hbase.sh
-ExecStop=/mdp/hbase/bin/stop-hbase.sh
+ExecStart=/gdp/hbase/bin/start-hbase.sh
+ExecStop=/gdp/hbase/bin/stop-hbase.sh
 RemainAfterExit=yes
 
 [Install]

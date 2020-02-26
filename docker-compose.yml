@@ -1,20 +1,20 @@
 version: "3.7"
 
 services:
-    mdp:
-        image: matiaet98/mdp:latest
-        container_name: mdp
-        hostname: mdp
-        domainname: matinet
+    <hostname>:
+        image: matiaet98/<hostname>:latest
+        container_name: <hostname>
+        hostname: <hostname>
+        domainname: <domainname>
         privileged: true
         networks:
-            matinet:
+            <network>:
                 ipv4_address: <ip>
                 aliases:
-                    - mdp.matinet
+                    - <hostname>.<domainname>
         volumes:
             - /sys/fs/cgroup:/sys/fs/cgroup:ro
 networks:
-    matinet:
+    <network>:
         external:
-            name: matinet
+            name: <network>

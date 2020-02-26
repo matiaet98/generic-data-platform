@@ -8,8 +8,8 @@ EnvironmentFile=/etc/environment
 Type=forking
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/spark/sbin/start-history-server.sh
-ExecStop=/mdp/spark/sbin/stop-history-server.sh
+ExecStart=/gdp/spark/sbin/start-history-server.sh
+ExecStop=/gdp/spark/sbin/stop-history-server.sh
 RemainAfterExit=yes
 
 

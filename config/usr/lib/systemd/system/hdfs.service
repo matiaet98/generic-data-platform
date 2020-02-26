@@ -8,8 +8,8 @@ EnvironmentFile=/etc/environment
 Type=forking
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/hadoop/sbin/start-dfs.sh
-ExecStop=/mdp/hadoop/sbin/stop-dfs.sh
+ExecStart=/gdp/hadoop/sbin/start-dfs.sh
+ExecStop=/gdp/hadoop/sbin/stop-dfs.sh
 RemainAfterExit=yes
 
 [Install]

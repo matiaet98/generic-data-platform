@@ -27,11 +27,11 @@
   </property>
   <property>
     <name>dfs.namenode.servicerpc-address</name>
-    <value>mdp.matinet:8022</value>
+    <value><hostname>.<domainname>:8022</value>
   </property>
   <property>
     <name>dfs.https.address</name>
-    <value>mdp.matinet:9871</value>
+    <value><hostname>.<domainname>:9871</value>
   </property>
   <property>
     <name>dfs.https.port</name>
@@ -39,7 +39,7 @@
   </property>
   <property>
     <name>dfs.namenode.http-address</name>
-    <value>mdp.matinet:9870</value>
+    <value><hostname>.<domainname>:9870</value>
   </property>
   <property>
     <name>fs.permissions.umask-mode</name>

@@ -20,7 +20,7 @@ likely need to add a number of new values. -->
 <configuration>
   <property>
     <name>metastore.thrift.uris</name>
-    <value>thrift://mdp.matinet:9083</value>
+    <value>thrift://<hostname>.<domainname>:9083</value>
     <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
   </property>
   <property>
@@ -53,7 +53,7 @@ likely need to add a number of new values. -->
   </property>
   <property>
     <name>hive.metastore.warehouse.dir</name>
-    <value>hdfs://mdp.matinet:9000/user/hive/warehouse</value>
+    <value>hdfs://<hostname>.<domainname>:9000/user/hive/warehouse</value>
     <description></description>
   </property>
 </configuration>

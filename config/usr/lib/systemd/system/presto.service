@@ -8,8 +8,8 @@ Environment=PATH=/lib/jvm/java-11-openjdk/bin:/usr/bin:/usr/sbin:/bin:/sbin
 Type=forking
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/presto/bin/launcher start
-ExecStop=/mdp/presto/bin/launcher stop
+ExecStart=/gdp/presto/bin/launcher start
+ExecStop=/gdp/presto/bin/launcher stop
 RemainAfterExit=yes
 
 [Install]

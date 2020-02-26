@@ -8,7 +8,7 @@ EnvironmentFile=/etc/environment
 Type=simple
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/hive/bin/hive --service metastore
+ExecStart=/gdp/hive/bin/hive --service metastore
 KillMode=process
 
 [Install]

@@ -23,15 +23,15 @@
   </property>
   <property>
     <name>yarn.resourcemanager.address</name>
-    <value>mdp.matinet:8032</value>
+    <value><hostname>.<domainname>:8032</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.address</name>
-    <value>mdp.matinet:8088</value>
+    <value><hostname>.<domainname>:8088</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.https.address</name>
-    <value>mdp.matinet:8090</value>
+    <value><hostname>.<domainname>:8090</value>
   </property>
   <property>
     <name>yarn.resourcemanager.client.thread-count</name>

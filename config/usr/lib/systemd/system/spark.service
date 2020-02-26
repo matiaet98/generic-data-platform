@@ -8,8 +8,8 @@ EnvironmentFile=/etc/environment
 Type=forking
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/spark/sbin/start-all.sh
-ExecStop=/mdp/spark/sbin/stop-all.sh
+ExecStart=/gdp/spark/sbin/start-all.sh
+ExecStop=/gdp/spark/sbin/stop-all.sh
 RemainAfterExit=yes
 
 [Install]

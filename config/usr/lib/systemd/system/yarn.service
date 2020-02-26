@@ -8,8 +8,8 @@ EnvironmentFile=/etc/environment
 Type=forking
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/hadoop/sbin/start-yarn.sh
-ExecStop=/mdp/hadoop/sbin/stop-yarn.sh
+ExecStart=/gdp/hadoop/sbin/start-yarn.sh
+ExecStop=/gdp/hadoop/sbin/stop-yarn.sh
 RemainAfterExit=yes
 
 [Install]

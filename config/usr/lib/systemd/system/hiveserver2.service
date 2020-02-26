@@ -8,7 +8,7 @@ EnvironmentFile=/etc/environment
 Type=simple
 User=hdfs
 Group=hdfs
-ExecStart=/mdp/hive/bin/hive --service hiveserver2
+ExecStart=/gdp/hive/bin/hive --service hiveserver2
 KillMode=process
 
 [Install]
