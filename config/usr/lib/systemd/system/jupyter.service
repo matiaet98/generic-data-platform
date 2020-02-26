@@ -1,0 +1,15 @@
+[Unit]
+Description=Starts Jupyterlab server
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=simple
+User=hdfs
+Group=hdfs
+ExecStart=jupyter-lab --config /mdp/jupyter/jupyter_notebook_config.py
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+

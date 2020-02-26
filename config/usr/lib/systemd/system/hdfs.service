@@ -1,0 +1,16 @@
+[Unit]
+Description=Starts Hadoop HDFS system
+After=network.target sshd.service
+Requires=sshd.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=forking
+User=hdfs
+Group=hdfs
+ExecStart=/mdp/hadoop/sbin/start-dfs.sh
+ExecStop=/mdp/hadoop/sbin/stop-dfs.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

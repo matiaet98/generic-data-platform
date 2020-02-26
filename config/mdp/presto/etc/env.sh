@@ -1,0 +1,1 @@
+JAVA_HOME=/lib/jvm/java-11-openjdk

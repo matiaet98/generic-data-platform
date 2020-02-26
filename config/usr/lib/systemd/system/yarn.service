@@ -1,0 +1,16 @@
+[Unit]
+Description=Starts Hadoop YARN service
+After=network.target sshd.service
+Requires=hdfs.service sshd.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=forking
+User=hdfs
+Group=hdfs
+ExecStart=/mdp/hadoop/sbin/start-yarn.sh
+ExecStop=/mdp/hadoop/sbin/stop-yarn.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+[Unit]
+Description=Starts HBASE system
+After=network.target zookeeper.service
+Requires=zookeeper.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=forking
+User=hdfs
+Group=hdfs
+ExecStart=/mdp/hbase/bin/start-hbase.sh
+ExecStop=/mdp/hbase/bin/stop-hbase.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

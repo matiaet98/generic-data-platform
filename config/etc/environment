@@ -1,0 +1,13 @@
+JAVA_HOME=/usr/lib/jvm/java-1.8.0
+HADOOP_HOME=/mdp/hadoop
+HADOOP_CONF_DIR=/mdp/hadoop/etc/hadoop
+SPARK_HOME=/mdp/spark
+SPARK_CONF_DIR=/mdp/spark/conf
+HIVE_HOME=/mdp/hive
+HIVE_CONF_DIR=/mdp/hive/conf
+SQOOP_HOME=/mdp/sqoop
+PRESTO_HOME=/mdp/presto
+AIRFLOW_HOME=/mdp/airflow
+KAFKA_HOME=/mdp/kafka
+HBASE_HOME=/mdp/hbase
+PHOENIX_HOME=/mdp/phoenix

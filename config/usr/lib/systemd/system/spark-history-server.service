@@ -1,0 +1,18 @@
+[Unit]
+Description=Starts Spark History Server
+After=network.target hdfs.service spark.service
+Requires=spark.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=forking
+User=hdfs
+Group=hdfs
+ExecStart=/mdp/spark/sbin/start-history-server.sh
+ExecStop=/mdp/spark/sbin/stop-history-server.sh
+RemainAfterExit=yes
+
+
+
+[Install]
+WantedBy=multi-user.target

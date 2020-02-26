@@ -1,0 +1,17 @@
+[Unit]
+Description=Starts Spark Master
+After=network.target hdfs.service
+Requires=hdfs.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=forking
+User=hdfs
+Group=hdfs
+ExecStart=/mdp/spark/sbin/start-all.sh
+ExecStop=/mdp/spark/sbin/stop-all.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

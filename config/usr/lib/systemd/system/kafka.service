@@ -1,0 +1,16 @@
+[Unit]
+Description=Starts Kafka Brokers
+After=network.target zookeeper.service
+Requires=zookeeper.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=simple
+User=hdfs
+Group=hdfs
+ExecStart=/mdp/kafka/bin/kafka-server-start.sh /mdp/kafka/config/server.properties
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+

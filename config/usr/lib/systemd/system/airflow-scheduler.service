@@ -1,0 +1,16 @@
+[Unit]
+Description=Starts the Airflow Scheduler
+After=network.target postgresql.service
+Requires=postgresql.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=simple
+User=hdfs
+Group=hdfs
+ExecStart=airflow scheduler
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,17 @@
+[Unit]
+Description=Starts Presto Server
+After=network.target
+
+[Service]
+Environment=JAVA_HOME=/lib/jvm/java-11-openjdk
+Environment=PATH=/lib/jvm/java-11-openjdk/bin:/usr/bin:/usr/sbin:/bin:/sbin
+Type=forking
+User=hdfs
+Group=hdfs
+ExecStart=/mdp/presto/bin/launcher start
+ExecStop=/mdp/presto/bin/launcher stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

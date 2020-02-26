@@ -1,0 +1,13 @@
+[Unit]
+Description=Starts Zookeeper service
+After=network.target sshd.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=forking
+ExecStart=/mdp/zookeeper/bin/zkServer.sh start
+ExecStop=/mdp/zookeeper/bin/zkServer.sh stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

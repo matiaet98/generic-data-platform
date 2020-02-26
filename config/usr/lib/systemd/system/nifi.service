@@ -1,0 +1,13 @@
+[Unit]
+Description=Starts NiFi service
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=forking
+ExecStart=/mdp/nifi/bin/nifi.sh start
+ExecStop=/mdp/nifi/bin/nifi.sh stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

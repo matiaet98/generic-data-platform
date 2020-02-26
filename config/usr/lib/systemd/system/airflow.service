@@ -1,0 +1,15 @@
+[Unit]
+Description=Starts the Airflow Webserver
+After=network.target postgresql.service
+Requires=postgresql.service airflow-scheduler.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=simple
+User=hdfs
+Group=hdfs
+ExecStart=airflow webserver
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

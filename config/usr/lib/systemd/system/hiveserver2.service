@@ -1,0 +1,16 @@
+[Unit]
+Description=Starts the Hive Metastore
+After=network.target hdfs.service metastore.service
+Requires=hdfs.service metastore.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Type=simple
+User=hdfs
+Group=hdfs
+ExecStart=/mdp/hive/bin/hive --service hiveserver2
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+
