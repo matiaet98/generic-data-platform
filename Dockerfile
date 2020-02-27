@@ -111,18 +111,17 @@ WORKDIR /
 COPY config/etc /etc
 COPY config/usr /usr
 COPY config/var /var
-COPY config/gdp/airflow/* /gdp/airflow/
-COPY config/gdp/hadoop/* /gdp/hadoop/
-COPY config/gdp/hbase/* /gdp/hbase/
-COPY config/gdp/hive/* /gdp/hive/
-COPY config/gdp/jupyter/* /gdp/jupyter/
-COPY config/gdp/kafka/* /gdp/kafka/
-COPY config/gdp/nifi/* /gdp/nifi/
-COPY config/gdp/presto/* /gdp/presto/
-COPY config/gdp/spark/* /gdp/spark/
-COPY config/gdp/sqoop/* /gdp/sqoop/
-COPY config/gdp/zookeeper/* /gdp/zookeeper/
-
+COPY config/gdp/airflow /gdp/airflow
+COPY config/gdp/hadoop/etc /gdp/hadoop/etc
+COPY config/gdp/hbase/conf /gdp/hbase/conf
+COPY config/gdp/hive/conf /gdp/hive/conf
+COPY config/gdp/jupyter /gdp/jupyter
+COPY config/gdp/kafka/config /gdp/kafka/config
+COPY config/gdp/nifi/conf /gdp/nifi/conf
+COPY config/gdp/presto/etc /gdp/presto/etc
+COPY config/gdp/spark/conf /gdp/spark/conf
+COPY config/gdp/sqoop/conf /gdp/sqoop/conf
+COPY config/gdp/zookeeper/conf /gdp/zookeeper/conf
 
 RUN rm -fr /var/run/nologin
 
