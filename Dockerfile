@@ -122,6 +122,7 @@ COPY config/gdp/presto/etc /gdp/presto/etc
 COPY config/gdp/spark/conf /gdp/spark/conf
 COPY config/gdp/sqoop/conf /gdp/sqoop/conf
 COPY config/gdp/zookeeper/conf /gdp/zookeeper/conf
+COPY config/bootstrap.sh config/start.sh config/stop.sh /
 
 RUN rm -fr /var/run/nologin
 
