@@ -1,6 +1,42 @@
 #!/bin/bash
 
+# Before running this script, you need to setup database config for airflow and hive:
+# Example using postgresql
+
+# You need to create a database and user
+# You can do this on postgres like this:
+# su - postgres
+# postgresql-setup --initdb
+# edit /var/lib/pgsql/data/pg_hba.conf and change:
+#local           all             all                             md5
+#host            all             all     0.0.0.0/0               md5
+#host            all             all     ::/0                    md5
+#local           replication     all                             md5
+#host            replication     all     0.0.0.0/0               md5
+#host            replication     all     ::/0                    md5
+# sudo systemctl enable postgresql
+# sudo systemctl start postgresql
+# createdb airflow
+# createuser airflow
+# psql airflow -c "alter user airflow with encrypted password 'airflow'"
+# psql airflow -c "grant all privileges on database airflow to airflow;"
+# psql airflow -c "alter role airflow set search_path = airflow,public;"
+#
+# Example for Oracle:
+#
+# CREATE USER "HIVE" IDENTIFIED BY "HIVE" DEFAULT TABLESPACE "USERS" TEMPORARY TABLESPACE "TEMP";
+# ALTER USER "HIVE" QUOTA UNLIMITED ON "USERS";
+# GRANT "CONNECT" TO "HIVE" ;
+# GRANT "RESOURCE" TO "HIVE" ;
+
+
+
 # Este script debe correrse con el usuario hdfs!!!
+
+if [ "$(whoami)" != "hdfs" ]; then
+        echo "Script must be run as user: hdfs"
+        exit -1
+fi
 
 # Zookeeper
 sudo systemctl enable zookeeper
@@ -28,17 +64,12 @@ sudo systemctl start hbase
 
 
 # Hive Metasore
-# You have to create the user from the metastore before run schematool
-# Example for Oracle:
-#
-# CREATE USER "HIVE" IDENTIFIED BY "HIVE" DEFAULT TABLESPACE "USERS" TEMPORARY TABLESPACE "TEMP";
-# ALTER USER "HIVE" QUOTA UNLIMITED ON "USERS";
-# GRANT "CONNECT" TO "HIVE" ;
-# GRANT "RESOURCE" TO "HIVE" ;
+# You have to edit the config in hive-site.xml to setup connection string, user and password for the metastore
+# Then you also have to initialize the metastore. Edit dbType according to your config:
 
 schematool -dbType oracle -initSchema
-sudo systemctl enable hive-metastore
-sudo systemctl start hive-metastore
+sudo systemctl enable metastore
+sudo systemctl start metastore
 
 # Spark with kafka package
 sudo systemctl enable spark
@@ -55,19 +86,6 @@ sudo systemctl start spark-history-server
 #Jupyterlab
 sudo systemctl enable jupyter
 sudo systemctl start jupyter
-
-# Airflow
-# You need to create a database and user for Airflow
-# You can do this on postgres like this:
-# postgresql-setup --initdb
-# sudo systemctl enable postgresql
-# sudo systemctl start postgresql
-# su postgres
-# createdb airflow
-# createuser airflow
-# psql airflow -c "alter user airflow with encrypted password 'airflow'"
-# psql airflow -c "grant all privileges on database airflow to airflow;"
-# psql airflow -c "alter role airflow set search_path = airflow,public;"
 
 sudo systemctl enable airflow-scheduler
 sudo systemctl enable airflow

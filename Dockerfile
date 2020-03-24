@@ -29,6 +29,7 @@ RUN ln -s /bin/python3 /bin/python && \
 RUN useradd -m -G users,wheel hdfs && \
     useradd -m -G users,wheel,hdfs spark && \
     useradd -m -G users,wheel,hdfs hive && \
+    usermod -a -G users,wheel postgres && \
     echo "root:root" | chpasswd && \
     echo "hdfs:hdfs" | chpasswd && \
     echo "spark:spark" | chpasswd && \
@@ -110,7 +111,6 @@ WORKDIR /
 # Copy our configurations
 COPY config/etc /etc
 COPY config/usr /usr
-COPY config/var /var
 COPY config/gdp/airflow /gdp/airflow
 COPY config/gdp/hadoop/etc /gdp/hadoop/etc
 COPY config/gdp/hbase/conf /gdp/hbase/conf
