@@ -31,7 +31,7 @@
     </property>
     <property>
         <name>hbase.zookeeper.property.dataDir</name>
-	<value>/home/hdfs/hbase/zk</value>
+	<value>/data/zk</value>
     </property>
     <property>
         <name>hbase.zookeeper.quorum</name>
