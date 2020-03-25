@@ -26,6 +26,10 @@
     <value>file:///data/nn</value>
   </property>
   <property>
+    <name>dfs.data.dir</name>
+    <value>file:///data/dn</value>
+  </property>
+  <property>
     <name>dfs.namenode.servicerpc-address</name>
     <value><hostname>.<domainname>:8022</value>
   </property>
