@@ -34,6 +34,8 @@ docker exec -ti mygdp bash
 - Change datasource config in: /gdp/airflow/airflow.cfg
 - Change datasource config in: /gdp/hive/conf/hive-site.xml
 5. Run bootstrap.sh
+6. Notes:
+- Jupyterlab password is "admin" (without the quotes)
 
 - You can expose this ports:
     - 8080      **Spark Master**
