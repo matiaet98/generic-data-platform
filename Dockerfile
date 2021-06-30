@@ -50,55 +50,49 @@ RUN useradd -m -G users,wheel hdfs && \
 
 WORKDIR /gdp/
 
-RUN wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz && \
-    tar xfz hadoop-3.2.1.tar.gz && \
-    rm -fr hadoop-3.2.1.tar.gz && \
-    ln -s hadoop-3.2.1 hadoop
-RUN wget https://archive.apache.org/dist/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop3.2.tgz && \
-    tar xfz spark-3.0.0-preview2-bin-hadoop3.2.tgz && \
-    rm -fr spark-3.0.0-preview2-bin-hadoop3.2.tgz && \
-    ln -s spark-3.0.0-preview2-bin-hadoop3.2 spark
-RUN wget https://archive.apache.org/dist/zookeeper/zookeeper-3.5.7/apache-zookeeper-3.5.7-bin.tar.gz && \
-    tar xfz apache-zookeeper-3.5.7-bin.tar.gz && \
-    rm -fr apache-zookeeper-3.5.7-bin.tar.gz && \
-    ln -s apache-zookeeper-3.5.7-bin zookeeper
+RUN wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.3.1.tar.gz && \
+    tar xfz hadoop-3.3.1.tar.gz && \
+    rm -fr hadoop-3.3.1.tar.gz && \
+    ln -s hadoop-3.3.1 hadoop
+RUN wget https://archive.apache.org/dist/spark/spark-3.1.2/spark-3.1.2-bin-hadoop3.2.tgz && \
+    tar xfz spark-3.0.0-bin-hadoop3.2.tgz && \
+    rm -fr spark-3.0.0-bin-hadoop3.2.tgz && \
+    ln -s spark-3.0.0-bin-hadoop3.2 spark
+RUN wget https://archive.apache.org/dist/zookeeper/zookeeper-3.7.0/apache-zookeeper-3.7.0-bin.tar.gz && \
+    tar xfz apache-zookeeper-3.7.0-bin.tar.gz && \
+    rm -fr apache-zookeeper-3.7.0-bin.tar.gz && \
+    ln -s apache-zookeeper-3.7.0-bin zookeeper
 RUN wget https://archive.apache.org/dist/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz && \
     tar xfz apache-hive-3.1.2-bin.tar.gz && \
     rm -fr apache-hive-3.1.2-bin.tar.gz && \
     ln -s apache-hive-3.1.2-bin hive
-RUN wget https://archive.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
-    tar xfz sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
-    rm -fr sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz && \
-    ln -s sqoop-1.4.7.bin__hadoop-2.6.0 sqoop && \
-    wget https://repo1.maven.org/maven2/com/carrotsearch/jdk19/commons-lang/2.6.1/commons-lang-2.6.1.jar -P /gdp/sqoop/lib/
-RUN wget https://repo1.maven.org/maven2/io/prestosql/presto-server/330/presto-server-330.tar.gz && \
-    wget https://repo1.maven.org/maven2/io/prestosql/presto-cli/330/presto-cli-330-executable.jar && \
-    tar xfz presto-server-330.tar.gz && \
-    rm -fr presto-server-330.tar.gz && \
-    ln -s presto-server-330 presto
-RUN wget https://archive.apache.org/dist/hbase/2.2.3/hbase-2.2.3-bin.tar.gz && \
-    tar xfz hbase-2.2.3-bin.tar.gz && \
-    rm -fr hbase-2.2.3-bin.tar.gz && \
-    ln -s hbase-2.2.3 hbase
-RUN wget https://archive.apache.org/dist/phoenix/apache-phoenix-5.0.0-HBase-2.0/bin/apache-phoenix-5.0.0-HBase-2.0-bin.tar.gz && \
-    tar xfz apache-phoenix-5.0.0-HBase-2.0-bin.tar.gz && \
-    rm -fr apache-phoenix-5.0.0-HBase-2.0-bin.tar.gz && \
-    ln -s apache-phoenix-5.0.0-HBase-2.0-bin phoenix
-RUN wget https://archive.apache.org/dist/kafka/2.4.0/kafka_2.12-2.4.0.tgz && \
-    tar xfz kafka_2.12-2.4.0.tgz && \
-    rm -fr kafka_2.12-2.4.0.tgz && \
-    ln -s kafka_2.12-2.4.0 kafka
-RUN wget https://archive.apache.org/dist/nifi/1.11.3/nifi-1.11.3-bin.tar.gz && \
-    tar xfz nifi-1.11.3-bin.tar.gz && \
-    rm -fr nifi-1.11.3-bin.tar.gz && \
-    ln -s nifi-1.11.3 nifi
+RUN wget https://repo1.maven.org/maven2/io/trino/trino-server/358/trino-server-358.tar.gz && \
+    wget https://repo1.maven.org/maven2/io/trino/trino-cli/358/trino-cli-358-executable.jar && \
+    tar xfz trino-server-358.tar.gz && \
+    rm -fr trino-server-358.tar.gz && \
+    ln -s trino-server-358 presto
+RUN wget https://archive.apache.org/dist/hbase/2.4.4/hbase-2.4.4-bin.tar.gz && \
+    tar xfz hbase-2.4.4-bin.tar.gz && \
+    rm -fr hbase-2.4.4-bin.tar.gz && \
+    ln -s hbase-2.4.4 hbase
+RUN wget http://www.apache.org/dyn/closer.lua/phoenix/phoenix-5.1.2/phoenix-hbase-2.4-5.1.2-bin.tar.gz && \
+    tar xfz phoenix-hbase-2.4-5.1.2-bin.tar.gz && \
+    rm -fr phoenix-hbase-2.4-5.1.2-bin.tar.gz && \
+    ln -s phoenix-hbase-2.4-5.1.2-bin phoenix
+RUN wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz && \
+    tar xfz kafka_2.13-2.8.0.tgz && \
+    rm -fr kafka_2.13-2.8.0.tgz && \
+    ln -s kafka_2.13-2.8.0 kafka
+RUN wget https://archive.apache.org/dist/nifi/1.13.2/nifi-1.13.2-bin.tar.gz && \
+    tar xfz nifi-1.13.2-bin.tar.gz && \
+    rm -fr nifi-1.13.2-bin.tar.gz && \
+    ln -s nifi-1.13.2 nifi
 RUN wget https://maven.xwiki.org/externals/com/oracle/jdbc/ojdbc8/12.2.0.1/ojdbc8-12.2.0.1.jar && \ 
     cp /gdp/phoenix/*.jar /gdp/hbase/lib/ && \
     chmod +x presto-cli-330-executable.jar && \
-    mv presto-cli-330-executable.jar presto/bin/presto && \
+    mv trino-cli-358-executable.jar presto/bin/presto && \
     cp ojdbc8-12.2.0.1.jar /gdp/hive/lib/ojdbc8.jar && \
     cp ojdbc8-12.2.0.1.jar /gdp/spark/jars/ojdbc8.jar && \
-    cp ojdbc8-12.2.0.1.jar /gdp/sqoop/lib/ojdbc8.jar && \
     rm -fr ojdbc8-12.2.0.1.jar && \
     rm -fr /gdp/hive/lib/guava-19.0.jar && \
     cp /gdp/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar /gdp/hive/lib/ && \
@@ -120,7 +114,6 @@ COPY config/gdp/kafka/config /gdp/kafka/config
 COPY config/gdp/nifi/conf /gdp/nifi/conf
 COPY config/gdp/presto/etc /gdp/presto/etc
 COPY config/gdp/spark/conf /gdp/spark/conf
-COPY config/gdp/sqoop/conf /gdp/sqoop/conf
 COPY config/gdp/zookeeper/conf /gdp/zookeeper/conf
 COPY config/bootstrap.sh config/start.sh config/stop.sh /
 
